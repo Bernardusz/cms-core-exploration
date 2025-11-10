@@ -3,12 +3,14 @@
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --color-primary: #38bdf8
+  --color-primary: #38bdf8;
+  --color-gray-dark: #242124;
+  --color-gray-light: #333333;
 }
 
 html,
 body {
-  @apply bg-white text-black dark:bg-gray-800 dark:text-white  ;
+  @apply bg-white text-black dark:bg-gray-dark dark:text-white  ;
   font-size: clamp(12px, calc(1vw + 1vh), 18px);
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
@@ -16,17 +18,29 @@ body {
 }
 
 .page{
-  @apply min-h-screen min-w-90 flex flex-col items-center ;
+  @apply min-h-screen min-w-90 max-w-[100vw] flex flex-col items-center;
 }
 
 .font-heading{
-  @apply font-['Alkatra',sans-serif] font-bold text-3xl;
+  @apply font-['Alkatra',sans-serif] font-bold;
 }
 
 .font-main{
-  @apply font-['Bricolage_Grotesque',sans-serif] font-normal text-base;
+  @apply font-['Bricolage_Grotesque',sans-serif] font-normal;
 }
 
 .button-primary{
-  @apply bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary/80 transition
+  @apply bg-primary text-white px-6 py-2 rounded-lg hover:bg-white hover:text-primary hover:scale-110 transition
+}
+
+.paragraph{
+  @apply max-w-2xl text-lg ;
+}
+
+.section{
+  @apply flex flex-col items-center justify-center w-screen text-center px-10 mt-30;
+}
+
+.section-nested{
+  @apply flex flex-col items-center justify-center w-full text-center px-10;
 }
