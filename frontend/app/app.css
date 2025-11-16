@@ -46,5 +46,9 @@ body {
 }
 
 .section-nested{
-  @apply flex flex-col justify-center w-full text-center px-10;
+  @apply flex flex-col justify-center w-full text-center ;
+}
+
+.box-holder{
+  @apply flex flex-col items-center justify-center mt-60 border border-white gap-10 p-7 rounded-3xl
 }

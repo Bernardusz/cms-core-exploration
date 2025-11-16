@@ -1,8 +1,8 @@
-import type { Route } from "./+types/Home";
+import type { Route } from "../+types/root";
 import { useNavigate } from "react-router";
 import Block from "~/components/Block";
 import HParagraph from "~/components/HParagraph";
-import RightArrow from "../../public/Arrow right.svg?react"
+
 export function meta({}: Route.MetaArgs) {
   return [
     { title: "Home - CMS" },
