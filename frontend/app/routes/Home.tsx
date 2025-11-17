@@ -2,6 +2,8 @@ import type { Route } from "../+types/root";
 import { useNavigate } from "react-router";
 import Block from "~/components/Block";
 import HParagraph from "~/components/HParagraph";
+import TextBox from "~/components/TextBox";
+import { Link } from "react-router";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -25,37 +27,34 @@ export default function Home() {
                     Simple. Clean. Powerful.
                 </p>
                 <div>
-                    <div className="mt-6 flex gap-4 w-full justify-center">
-                        <button className="button-primary" onClick={() => navigate("/about")}>
-                            Get started
-                        </button>
-                        <button className="button-primary">
-                            View on GitHub    
-                        </button>    
+                    <div className="mt-6 grid grid-cols-2 gap-4 w-full justify-center">
+                        <Link to="/signup" className="button-primary">Get started</Link>
+                        <a href="https://github.com/Bernardusz/CMS-Django-React" className="button-primary">
+                            View on GitHub
+                        </a> 
                     </div>
-                    <button className="button-primary mt-5 w-full">
+                    <a href="#how-it-works" className="button-primary mt-5 w-full">
                         Tech used    
-                    </button>
+                    </a>
                 </div>
             </section>
             <hr className="w-screen mt-40" />
 
             <section id="features" className="section">
-                <div className="section-nested">
+                <div className="flex flex-col lg:grid grid-cols-2">
                     <HParagraph title="⚡ Modular Architecture" text="Made with 2 separate apps with separation of concerns in mind. Scalable and Maintainable"/>
                     <HParagraph title="💾 Built with Django + React Router v7" text="Made with 2 of the biggest frameworks in web industry."/>
                     <HParagraph title="🔐 JWT-ready Authentication" text="Secured with JSON Web Token, making sure users are safe."/>
                     <HParagraph title="🚀 API-first, SPA and SSR ready" text="Made with decoupled frontend that supports SPA and even SSR"/>
-
                 </div>
             </section>
 
-            <section id="how-it-works" className="section gap-10">
+            <section id="how-it-works" className="section gap-10 lg:max-w-3xl scroll-mt-30">
                 <div className="w-full">
                     <h1 className="font-heading text-3xl text-left">📚 How it works</h1>
                 </div>
                 <p className="max-w-2xl text-lg font-main">“No magic. Just Django, React, and clean architecture.”</p>
-                <div className="w-full flex flex-wrap gap-5 justify-center items-center">
+                <div className="w-full grid grid-cols-3 gap-5 justify-center items-stretch">
                     <Block text="User"/>
                     <Block text="React Router Page"/>
 
@@ -66,7 +65,7 @@ export default function Home() {
                 </div>     
             </section>
 
-            <section id="demos" className="section">
+            <section id="demos" className="section lg:max-w-3xl">
                 <div className="w-full">
                     <h1 className="font-heading text-3xl text-left">📷 Demos</h1>
                 </div>
@@ -74,76 +73,55 @@ export default function Home() {
                     Soon to be added demos!
                 </div>
             </section>
-            <section id="contribute" className="section">
+            <section id="contribute" className="section lg:max-w-3xl">
                 <div className="w-full">
                     <h1 className="font-heading text-3xl text-left">✨ Contribute</h1>
                 </div>
                 <p className="font-main text-xl mt-10">“This is open source. Fork it, break it, fix it.”</p>
 
                 <div className="flex flex-row gap-5 p-2 mt-5">
-                    <button className="button-primary">⭐ Star on GitHub</button>
-                    <button className="button-primary">🐛 Report Bug</button>
-                    <button className="button-primary">💡 Suggest Feature</button>
+                    <a 
+                    href="https://github.com/Bernardusz/CMS-Django-React"
+                    className="button-primary"
+                    >⭐ Star on GitHub</a>
+                    <a 
+                    href="https://github.com/Bernardusz/CMS-Django-React"
+                    className="button-primary"
+                    >🐛 Report Bug</a>
+                    <a 
+                    href="https://github.com/Bernardusz/CMS-Django-React"
+                    className="button-primary"
+                    >💡 Suggest Feature</a>
+
                 </div>
             </section>
 
-            <section id="roadmap" className="section">
-                <div className="w-full">
+            <section id="roadmap" className="section lg:max-w-3xl">
+                <div className="w-full mb-10">
                     <h1 className="font-heading text-3xl text-left">🛣 Roadmap</h1>
                 </div>
                 <div className="section-nested">
-                    <div id="roadmap-mvp-0.5" className="section-nested mt-10 border p-4 hover:scale-110 ">
-                        <h1 className="font-heading text-3xl text-center">MVP - v0.5</h1>
-                        <ul className="font-main text-xl mt-5">
-                            <li className="relative pl-10 text-left before:absolute before:left-0 before:top-0 before:content-['🔒']">
-                                Authentication
-                            </li>
-                            <li className="relative pl-10 text-left before:absolute before:left-0 before:top-1 before:content-['✏']">
-                                Simple CRUD Admin
-                            </li>
-                            <li className="relative pl-10 text-left before:absolute before:left-0 before:top-1 before:content-['⛔']">
-                                Private & Public Content
-                            </li>
-                            <li className="relative pl-10 text-left before:absolute before:left-0 before:top-1 before:content-['📖']">
-                                Dasboard UI
-                            </li>
-                        </ul>
-                    </div>
-                    <div id="roadmap-mvp-1" className="section-nested mt-10 border p-4 hover:scale-110">
-                            <h1 className="font-heading text-3xl text-center">MVP - v1.0</h1>
-                        <ul className="font-main text-xl mt-5">
-                            <li className="relative pl-10 text-left before:absolute before:left-0 before:top-0 before:content-['📚']">
-                                3 Roles editing
-                            </li>
-                            <li className="relative pl-10 text-left before:absolute before:left-0 before:top-1 before:content-['📑']">
-                                Rich Text Editor
-                            </li>
-                            <li className="relative pl-10 text-left before:absolute before:left-0 before:top-1 before:content-['👀']">
-                                Improved UI
-                            </li>
-                        </ul>
-                    </div>
-                    <div id="roadmap-mvp-2" className="section-nested mt-10 border p-4 hover:scale-110">
-                            <h1 className="font-heading text-3xl text-center">MVP - v2.0</h1>
-                        <ul className="font-main text-xl mt-5">
-                            <li className="relative pl-10 text-left before:absolute before:left-0 before:top-0 before:content-['🔒']">
-                                Better and Improved user roles and permissions
-                            </li>
-                            <li className="relative pl-10 text-left before:absolute before:left-0 before:top-1 before:content-['📂']">
-                                Media manager (Upload, Preview)
-                            </li>
-                            <li className="relative pl-10 text-left before:absolute before:left-0 before:top-1 before:content-['⏰']">
-                                Content scheduling
-                            </li>
-                            <li className="relative pl-10 text-left before:absolute before:left-0 before:top-1 before:content-['🔍']">
-                                Search, Filter and Pagination
-                            </li>
-                            <li className="relative pl-10 text-left before:absolute before:left-0 before:top-1 before:content-['📖']">
-                                Dashboard Analytics
-                            </li>
-                        </ul>
-                    </div>
+                    <div className="flex flex-col md:grid md:grid-cols-2 gap-10 [&>*:last-child]:md:col-span-2">
+                        <TextBox id="roadmap-mvp-0.5" heading="MVP - v0.5" listOfText={[
+                        {id: 1, bullet: "🔒", text:"Authentication"},
+                        {id: 2, bullet: "✏", text: "Simple CRUD Admin"},
+                        {id: 3, bullet: "⛔", text: "Private & Public Content"},
+                        {id: 4, bullet: "📖", text: "Dasboard UI"},
+                        ]}/>
+                        <TextBox id="roadmap-mvp-1" heading="v1.0" listOfText={[
+                            {id: 1, bullet: "📚", text:"3 Roles editing"},
+                            {id: 2, bullet: "📑", text: "Rich Text Editor"},
+                            {id: 3, bullet: "👀", text: "Improved UI"},
+                        ]}/>
+                        <TextBox id="roadmap-mvp-2" heading="v2.0" listOfText={[
+                            {id: 1, bullet: "🔒", text:"Better and Improved user roles and permissions"},
+                            {id: 2, bullet: "📂", text: "Media manager (Upload, Preview)"},
+                            {id: 3, bullet: "⏰", text: "Content scheduling"},
+                            {id: 4, bullet: "🔍", text: "Search, Filter and Pagination"},
+                            {id: 5, bullet: "📖", text: "Dashboard Analytics"},
 
+                        ]}/>
+                    </div>
                 </div>
             </section>
         </div>

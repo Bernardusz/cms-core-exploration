@@ -30,11 +30,15 @@ body {
 }
 
 .button-primary{
-  @apply bg-primary text-white px-6 py-2 rounded-lg hover:bg-white hover:text-primary hover:scale-110 transition
+  @apply block bg-primary text-white px-6 py-2 rounded-lg hover:bg-white hover:text-primary hover:scale-110 transition
 }
 
 .box-primary{
-  @apply bg-primary text-white px-6 py-2 min-h-20 max-w-40 flex justify-center  items-center rounded-lg hover:bg-white hover:text-primary hover:scale-110 transition
+  @apply bg-primary text-white px-6 py-2  flex justify-center  items-center rounded-lg hover:bg-white hover:text-primary hover:scale-110 transition
+}
+
+.box-classic{
+  @apply border border-white  text-white px-10 py-10  flex justify-center  items-center rounded-lg hover:bg-white hover:text-primary hover:scale-110 transition
 }
 
 .paragraph{
@@ -51,4 +55,8 @@ body {
 
 .box-holder{
   @apply flex flex-col items-center justify-center mt-60 border border-white gap-10 p-7 rounded-3xl
+}
+
+.nav-link{
+  @apply h-fit p-2 border w-full flex flex-col bg-primary border-white justify-center items-center font-['Bricolage_Grotesque',sans-serif] font-normal hover:scale-125 hover:bg-white hover:text-primary
 }

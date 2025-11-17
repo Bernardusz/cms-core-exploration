@@ -1,23 +1,32 @@
 import type React from "react"
 import { Link } from "react-router"
+import FileDropzone from "./Dropzone"
 
-type booleanInput = {
+type baseInput = {
     id: number,
     placeholder: string,
-    value: string,
-    setValue: React.Dispatch<React.SetStateAction<string>>,
-    type: string
 }
 
-type stringInput = {
-    id: number,
-    placeholder: string,
+type booleanInput = baseInput & {
     value: boolean,
     setValue: React.Dispatch<React.SetStateAction<boolean>>,
-    type: string
+    type: "checkbox"
 }
 
-export type listOfInput = stringInput | booleanInput;
+type stringInput = baseInput & {
+    value: string,
+    setValue: React.Dispatch<React.SetStateAction<string>>,
+    type: "text" | "email" | "password" | "description"
+
+}
+
+type fileInput = baseInput & {
+    value: File | null,
+    setValue: React.Dispatch<React.SetStateAction<File | null>>,
+    type: "dropzone"
+}
+
+export type listOfInput = stringInput | booleanInput | fileInput;
 
 const InputSection = ({listOfInput, headingText, buttonText, doTask, footerText, footerLink, footerLinkText}: 
     {listOfInput: listOfInput[], headingText: string, buttonText: string, doTask: () => void,
@@ -32,9 +41,9 @@ const InputSection = ({listOfInput, headingText, buttonText, doTask, footerText,
             </div>
             <div className="section-nested gap-5">
                 { listOfInput.map((item) => (
-                    typeof item.value == "boolean" ? (
-                        <div className="flex flex-row items-center-safe justify-center-safe gap-5">
-                            <input key={item.id} type={item.type} checked={item.value}
+                    item.type == "checkbox" ? (
+                        <div className="flex flex-row items-center-safe justify-center-safe gap-5" key={item.id}>
+                            <input type={item.type} checked={item.value}
                             onChange={() => item.setValue(!item.value)}
                             className="h-9 border border-white rounded-xl"/>
                             <p>{item.placeholder}</p>
@@ -46,6 +55,10 @@ const InputSection = ({listOfInput, headingText, buttonText, doTask, footerText,
                         onChange={event => item.setValue(event.target.value)}
                         className="h-50 text-center pt-10 border border-white rounded-xl"/>
                     ) : 
+                    item.type === "dropzone" ?
+                    (
+                        <FileDropzone key={item.id} fileState={item.value} setFileState={item.setValue}/>
+                    ) :
                         
                     (
                         <input key={item.id} type={item.type}

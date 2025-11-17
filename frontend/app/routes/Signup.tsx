@@ -1,5 +1,5 @@
 import type { Route } from "../+types/root"
-
+import { useCallback } from "react"
 import { useState } from "react"
 import InputSection from "~/components/Input"
 import type { listOfInput } from "~/components/Input"
@@ -22,6 +22,10 @@ const Signup = () => {
 
     const [description, setDescription] = useState<string>("");
     const [privateAccount, setPrivateAccount] = useState<boolean>(false)
+    const [file, setFile] = useState<File | null>(null)
+
+
+
     const handleSignup = () => {
         // TODO: Add Sign up via Fetch/Axios
     };
@@ -33,6 +37,8 @@ const Signup = () => {
     const profileCreationInput: listOfInput[] = [
         {id: 1, placeholder: "Input a description for your profile", value: description, setValue: setDescription, type: "description"},
         {id: 2, placeholder: "Create as a private account ?", value: privateAccount, setValue: setPrivateAccount, type: "checkbox"},
+        {id: 3, placeholder: "Dropzone", value: file, setValue: setFile, type: "dropzone"}
+
     ]
     return (
         <div className="page">
