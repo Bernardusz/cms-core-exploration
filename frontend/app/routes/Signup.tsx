@@ -36,8 +36,8 @@ const Signup = () => {
     ];
     const profileCreationInput: listOfInput[] = [
         {id: 1, placeholder: "Input a description for your profile", value: description, setValue: setDescription, type: "description"},
-        {id: 2, placeholder: "Create as a private account ?", value: privateAccount, setValue: setPrivateAccount, type: "checkbox"},
-        {id: 3, placeholder: "Dropzone", value: file, setValue: setFile, type: "dropzone"}
+        {id: 2, placeholder: "Dropzone", value: file, setValue: setFile, type: "dropzone"},
+        {id: 3, placeholder: "Create as a private account ?", value: privateAccount, setValue: setPrivateAccount, type: "checkbox"}
 
     ]
     return (

@@ -60,3 +60,10 @@ body {
 .nav-link{
   @apply h-fit p-2 border w-full flex flex-col bg-primary border-white justify-center items-center font-['Bricolage_Grotesque',sans-serif] font-normal hover:scale-125 hover:bg-white hover:text-primary
 }
+
+.custom-bullet::before {
+  content: var(--bullet-content); /* Read the variable */
+  position: absolute;
+  left: 0;
+  top: 0;
+}
