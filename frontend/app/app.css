@@ -4,13 +4,12 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --color-primary: #38bdf8;
-  --color-gray-dark: #242124;
-  --color-gray-light: #333333;
+  --color-text-light: #0f172a; /* slate-900 */
 }
 
 html,
 body {
-  @apply bg-white text-black dark:bg-gray-dark dark:text-white  ;
+  @apply bg-white text-text-light dark:bg-slate-900 dark:text-white  ;
   font-size: clamp(12px, calc(1vw + 1vh), 18px);
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
@@ -22,7 +21,7 @@ body {
 }
 
 .font-heading{
-  @apply font-['Alkatra',sans-serif] font-bold;
+  @apply font-['Poppins',sans-serif] font-bold;
 }
 
 .font-main{
@@ -46,7 +45,7 @@ body {
 }
 
 .section{
-  @apply flex flex-col items-center justify-center w-screen text-center px-10 mt-30;
+  @apply flex flex-col items-center justify-center w-screen text-center px-10 mt-20;
 }
 
 .section-nested{
@@ -66,4 +65,10 @@ body {
   position: absolute;
   left: 0;
   top: 0;
+}
+
+.slick-slide img{
+  width: 100vw;
+  height: auto;
+  display: block;
 }

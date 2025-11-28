@@ -1,11 +1,15 @@
 import type { Route } from "../+types/root";
-import { useNavigate } from "react-router";
+// import { useNavigate } from "react-router";
 import Block from "~/components/Block";
 import HParagraph from "~/components/HParagraph";
 import TextBox from "~/components/TextBox";
 import { Link } from "react-router";
+import ClientSlider from "~/components/ClientSlider";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import GridContainer from "~/components/GridContainer";
 
-export function meta({}: Route.MetaArgs) {
+export function meta(_args: Route.MetaArgs) {
   return [
     { title: "Home - CMS" },
     { name: "description", content: "A Content Management System that's made with React Router v7 and Django from scratch" },
@@ -13,30 +17,67 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-    const navigate = useNavigate()
+    // const navigate = useNavigate();
+    const settings = {
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 400,
+    autoplaySpeed: 3000,
+    cssEase: "ease"
+    };
+
     return (
         <div className="page">
-            <section id="hero-section" className="section pt-25">
-                <h1 className="font-heading mb-4 bg-linear-to-br 
-                from-primary via-white text-transparent to-primary
-                hover:from-white hover:via-primary hover:to-white]
-                 text-6xl bg-clip-text">
-                    A CMS That Actually Works<br/> — No Buzzwords.</h1>
-                <p className="max-w-2xl text-lg font-main">
-                    Built from scratch with React Router v7 and Django. Fully open-source. 
-                    Simple. Clean. Powerful.
-                </p>
-                <div>
-                    <div className="mt-6 grid grid-cols-2 gap-4 w-full justify-center">
-                        <Link to="/signup" className="button-primary">Get started</Link>
-                        <a href="https://github.com/Bernardusz/CMS-Django-React" className="button-primary">
-                            View on GitHub
-                        </a> 
+            <section id="hero-section" className="section">
+                <ClientSlider className="absolute w-screen" width="screen" settings={settings}>
+                    <div className="w-full">
+                        <img
+                            src="/content.jpg"
+                            className="w-full h-full object-cover"
+                        alt="Slide 1"
+                        />
                     </div>
-                    <a href="#how-it-works" className="button-primary mt-5 w-full">
-                        Tech used    
-                    </a>
+                    <div className="w-full">
+                        <img
+                            src="/content2.jpg"
+                            className="w-full h-full object-cover"
+                            alt="Slide 2"
+                        />
+                    </div>
+                    <div className="w-full">
+                        <img
+                            src="/content3.jpg"
+                        className="w-full h-full object-cover"
+                            alt="Slide 3"
+                        />
+                    </div>
+                </ClientSlider>
+                <div className="absolute flex flex-col items-center">
+                    <h1 className="font-heading mb-4 bg-linear-to-br 
+                    from-primary via-white text-transparent to-primary
+                    hover:from-white hover:via-primary hover:to-white]
+                    text-6xl bg-clip-text">
+                        A CMS That Actually Works<br/> — No Buzzwords.</h1>
+                    <p className="max-w-2xl text-lg font-main">
+                        Built from scratch with React Router v7 and Django. Fully open-source. 
+                        Simple. Clean. Powerful.
+                    </p>
+                    <div>
+                        <div className="mt-6 grid grid-cols-2 gap-4 w-full justify-center">
+                            <Link to="/signup" className="button-primary">Get started</Link>
+                            <a href="https://github.com/Bernardusz/CMS-Django-React" className="button-primary">
+                                View on GitHub
+                            </a> 
+                        </div>
+                        <a href="#how-it-works" className="button-primary mt-5 w-full">
+                            Tech used    
+                        </a>
+                    </div>
                 </div>
+
+
             </section>
             <hr className="w-screen mt-40" />
 
@@ -101,7 +142,7 @@ export default function Home() {
                     <h1 className="font-heading text-3xl text-left">🛣 Roadmap</h1>
                 </div>
                 <div className="section-nested">
-                    <div className="flex flex-col md:grid md:grid-cols-2 gap-10 [&>*:last-child]:md:col-span-2">
+                    <GridContainer>
                         <TextBox id="roadmap-mvp-0.5" heading="MVP - v0.5" listOfText={[
                         {id: 1, bullet: "🔒", text:"Authentication"},
                         {id: 2, bullet: "✏", text: "Simple CRUD Admin"},
@@ -121,7 +162,7 @@ export default function Home() {
                             {id: 5, bullet: "📖", text: "Dashboard Analytics"},
 
                         ]}/>
-                    </div>
+                    </GridContainer>
                 </div>
             </section>
         </div>

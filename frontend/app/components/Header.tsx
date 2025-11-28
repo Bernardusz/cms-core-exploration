@@ -1,4 +1,4 @@
-import Menu from "../../public/menu.svg?react"
+import Menu from "~/assets/menu.svg?react"
 import useNavbar from "~/context/navbar";
 import Navbar from "./Navbar";
 const Header = () => {

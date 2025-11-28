@@ -1,12 +1,12 @@
 import type { Route } from "../+types/root"
-import { useCallback } from "react"
+// import { useCallback } from "react"
 import { useState } from "react"
 import InputSection from "~/components/Input"
 import type { listOfInput } from "~/components/Input"
-import RightArrow from "../../public/Arrow right.svg?react"
+import RightArrow from "~/assets/Arrow right.svg?react"
 
 
-export function meta({}: Route.MetaArgs) {
+export function meta(_args: Route.MetaArgs) {
   return [
     { title: "Signup - CMS" },
     { name: "description", content: "A Content Management System that's made with React Router v7 and Django from scratch" },

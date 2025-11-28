@@ -1,12 +1,19 @@
 type liText = {
-    text: string,
-    bullet: string,
-    id: number
+  text: string,
+  bullet: string,
+  id: number
 }
 
-const TextBox  = ({id, listOfText, heading} : {id: string, listOfText: liText[], heading: string}) => {
+type TextBoxProps = {
+  id: string,
+  listOfText: liText[],
+  heading: string,
+  className?: string
+}
+
+const TextBox  = ({id, listOfText, heading, className = ""} : TextBoxProps) => {
     return (
-        <div id={id}  className="section-nested border p-4 hover:scale-110">
+        <div id={id}  className={`section-nested border p-4 hover:scale-110 ${className}`}>
             <h1 className="font-heading text-3xl text-center">{ heading }</h1>
             <ul className="font-main text-xl mt-5">
                 { listOfText.map(item => (
