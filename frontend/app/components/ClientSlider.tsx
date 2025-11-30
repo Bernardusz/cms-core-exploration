@@ -1,9 +1,16 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, type ReactNode } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const ClientSlider = ({children, settings, width} : any) => {
+type ClientSliderType = {
+    children: ReactNode,
+    settings: object,
+    width: string,
+    height: string
+}
+
+const ClientSlider = ({children, settings, width, height} : ClientSliderType) => {
     const [mounted, setMounted] = useState<boolean>(false)
     useEffect(() => {
         setMounted(true)
@@ -12,8 +19,8 @@ const ClientSlider = ({children, settings, width} : any) => {
     if (!mounted) return null;
 
     return (
-        <div className={`w-${width} overflow-hidden`}>
-            <Slider {...settings}>
+        <div className={`${width} ${height} overflow-hidden`}>
+            <Slider className="h-screen" {...settings}>
                 {children}
             </Slider>
         </div>

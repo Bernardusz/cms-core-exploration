@@ -11,6 +11,9 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+// import useTokenState from "./context/token";
+import SideBar from "./components/SideBar";
+import useNavbar from "./context/navbar";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -26,7 +29,8 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
-
+  // const token = useTokenState((state) =>  state.accessToken);
+  const isOpen = useNavbar((state) => state.isOpen)
   return (
     <html lang="en">
       <head>
@@ -35,9 +39,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className={`${isOpen ? "" : "items-center"}
+        transition-transform duration-1000 ease-in-out
+      `}>
         <Header />
-        {children}
+        <div className={`${isOpen ? "md:w-[80vw]" : "md: w-full"} flex`}>
+          <SideBar/>
+          
+          <main className={`w-full flex-1 ${ isOpen ? "blur-sm md:blur-[0]" : "" } `}>
+            {children}
+          </main>
+        </div>
         <ScrollRestoration />
         <Scripts />
         <Footer />

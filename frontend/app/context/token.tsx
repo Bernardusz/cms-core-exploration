@@ -30,7 +30,7 @@ const useTokenState = create<tokenState>()((set) => ({
 
     state: "session",
     isInitialized: false,
-    accessToken: undefined,
+    accessToken: "testing",
     refreshToken: undefined,
 
     setTokens: ({ accessToken, refreshToken, state }) => {
@@ -52,8 +52,8 @@ const useTokenState = create<tokenState>()((set) => ({
 
         if (storedAccessToken && storedRefreshToken){
             set({
-                accessToken: storedAccessToken,
-                refreshToken: storedRefreshToken,
+                accessToken: storedAccessToken ?? undefined,
+                refreshToken: storedRefreshToken ?? undefined,
                 state: storedState,
                 isInitialized: true
             })

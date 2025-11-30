@@ -1,4 +1,4 @@
-const Block = ({text}: {text:string}) => {
+const BlockImages = ({text}: {text:string}) => {
     return(
         <div className="box-primary">
             <h3 className="font-main">{text}</h3>
@@ -6,4 +6,4 @@ const Block = ({text}: {text:string}) => {
     );
 };
 
-export default Block;
+export default BlockImages;

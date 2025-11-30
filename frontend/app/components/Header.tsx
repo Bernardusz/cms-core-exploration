@@ -1,16 +1,20 @@
 import Menu from "~/assets/menu.svg?react"
 import useNavbar from "~/context/navbar";
-import Navbar from "./Navbar";
+import { Link } from "react-router";
+import { useNavigate } from "react-router";
 const Header = () => {
     const toggleIsOpen = useNavbar((state) => state.toggleIsOpen)
+    const navigate = useNavigate();
     return(
-        <div className="flex flex-col fixed top-0 left-0 right-0 z-50 border-b-2 border-white">
-            <header className="flex flex-row min-w-screen min-h-20 items-center justify-between p-5 bg-primary text-secondary ">
-                <h1 className="text-2xl font-heading ">Content Management System</h1>
-                <Menu className="text-white hover:stroke-primary stroke-3" onClick={toggleIsOpen}/>
-                
+        <div className="flex flex-col fixed top-0 w-full left-0 right-0 z-50 border-b-2 border-white">
+            <header className="flex flex-row min-h-20 items-center justify-between p-5 bg-primary text-secondary ">
+                <h1 className="text-2xl font-heading " onClick={() => navigate("/")}>Content Management System</h1>
+                <Menu className="text-white hover:stroke-primary stroke-3 flex md:hidden" onClick={toggleIsOpen}/>
+                <nav className="hidden md:flex flex-row gap-2 ">
+                    <Link to="/signup" className="block border border-white p-1 rounded-sm font-main text-xs" >Sign Up</Link>
+                    <Link to="/login" className="block border border-white p-1 rounded-sm font-main text-xs">Sign In</Link>
+                </nav>
             </header>
-            <Navbar />    
         </div>
     )
 

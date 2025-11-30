@@ -3,13 +3,13 @@
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --color-primary: #38bdf8;
+  --color-primary: #0ea5e9 /*#38bdf8*/;
   --color-text-light: #0f172a; /* slate-900 */
 }
 
 html,
 body {
-  @apply bg-white text-text-light dark:bg-slate-900 dark:text-white  ;
+  @apply bg-white text-text-light dark:bg-slate-900 dark:text-white flex flex-col;
   font-size: clamp(12px, calc(1vw + 1vh), 18px);
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
@@ -17,8 +17,13 @@ body {
 }
 
 .page{
-  @apply min-h-screen min-w-90 max-w-[100vw] flex flex-col items-center;
+  @apply min-h-screen  flex flex-col items-center;
 }
+
+.page--row {
+  @apply flex-row;
+}
+
 
 .font-heading{
   @apply font-['Poppins',sans-serif] font-bold;
@@ -45,7 +50,11 @@ body {
 }
 
 .section{
-  @apply flex flex-col items-center justify-center w-screen text-center px-10 mt-20;
+  @apply flex flex-col items-center justify-center w-full text-center mt-20 px-20;
+}
+
+.section--nopx{
+  @apply px-0;
 }
 
 .section-nested{
@@ -57,7 +66,7 @@ body {
 }
 
 .nav-link{
-  @apply h-fit p-2 border w-full flex flex-col bg-primary border-white justify-center items-center font-['Bricolage_Grotesque',sans-serif] font-normal hover:scale-125 hover:bg-white hover:text-primary
+  @apply h-fit p-2 w-full flex flex-col bg-primary  justify-center items-center font-['Bricolage_Grotesque',sans-serif] font-normal hover:scale-125 hover:bg-white hover:text-primary
 }
 
 .custom-bullet::before {
@@ -68,7 +77,6 @@ body {
 }
 
 .slick-slide img{
-  width: 100vw;
-  height: auto;
+  height: 100%; !important
   display: block;
 }

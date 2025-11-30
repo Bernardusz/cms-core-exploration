@@ -19,37 +19,38 @@ export function meta(_args: Route.MetaArgs) {
 export default function Home() {
     // const navigate = useNavigate();
     const settings = {
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    speed: 400,
-    autoplaySpeed: 3000,
-    cssEase: "ease"
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        speed: 400,
+        autoplaySpeed: 3000,
+        cssEase: "ease",
+        adaptiveHeight: false
     };
 
     return (
         <div className="page">
-            <section id="hero-section" className="section">
-                <ClientSlider className="absolute w-screen" width="screen" settings={settings}>
-                    <div className="w-full">
+            <section id="hero-section" className="section section--nopx">
+                <ClientSlider width="w-full" height="h-220" settings={settings}>
+                    <div className="w-full h-screen overflow-hidden">
                         <img
                             src="/content.jpg"
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover object-center"
                         alt="Slide 1"
                         />
                     </div>
-                    <div className="w-full">
+                    <div className="w-full h-screen overflow-hidden">
                         <img
                             src="/content2.jpg"
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover object-center"
                             alt="Slide 2"
                         />
                     </div>
-                    <div className="w-full">
+                    <div className="w-full h-screen overflow-hidden">
                         <img
                             src="/content3.jpg"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover object-center"
                             alt="Slide 3"
                         />
                     </div>
@@ -79,7 +80,7 @@ export default function Home() {
 
 
             </section>
-            <hr className="w-screen mt-40" />
+            <hr className="w-full mt-40" />
 
             <section id="features" className="section">
                 <div className="flex flex-col lg:grid grid-cols-2">
@@ -141,7 +142,7 @@ export default function Home() {
                 <div className="w-full mb-10">
                     <h1 className="font-heading text-3xl text-left">🛣 Roadmap</h1>
                 </div>
-                <div className="section-nested">
+                <div className="section-nested mb-20">
                     <GridContainer>
                         <TextBox id="roadmap-mvp-0.5" heading="MVP - v0.5" listOfText={[
                         {id: 1, bullet: "🔒", text:"Authentication"},
