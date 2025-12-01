@@ -25,12 +25,12 @@ const saveToken = ({accessToken, refreshToken, state}: {accessToken: string, ref
 }
 
 const useTokenState = create<tokenState>()((set) => ({
-    isLoggedIn: false,
+    isLoggedIn: true,
     setIsLoggedIn: (loggedIn) => ( set({ isLoggedIn:  loggedIn}) ),
 
     state: "session",
     isInitialized: false,
-    accessToken: "testing",
+    accessToken: undefined,
     refreshToken: undefined,
 
     setTokens: ({ accessToken, refreshToken, state }) => {

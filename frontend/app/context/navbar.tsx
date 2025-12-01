@@ -4,11 +4,13 @@ interface Navbar {
     isOpen: boolean;
     toggleIsOpen: () => void;
     setClose: () => void;
+    setOpen: () => void;
 }
 
 const useNavbar = create<Navbar>((set) => ({
     isOpen: false,
     toggleIsOpen: () => set((state) => ({ isOpen: !state.isOpen })),
-    setClose: () => set((_state) => ({ isOpen: false }))
+    setClose: () => set(() => ({ isOpen: false })),
+    setOpen: () => set(() => ({ isOpen: true }))
 }));
 export default useNavbar;

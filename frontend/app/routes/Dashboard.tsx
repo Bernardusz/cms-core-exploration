@@ -1,6 +1,4 @@
-import InputSection from "~/components/Input";
 import type { Route } from "../+types/root";
-import SettingsLogo from "~/assets/Settings.svg?react"
 export function meta(_args: Route.MetaArgs) {
   return [
     { title: "Dashboard - CMS" },
@@ -13,7 +11,6 @@ const Dashboard = () => {
     return (
         <div className="page page--row">
             <section className="section">
-              <input type="text" />
             </section>
         </div>
     );

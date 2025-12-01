@@ -16,6 +16,7 @@ const Navbar = () => {
             transition-all duration-1000 ease-in-out
             w-full overflow-hidden
         `}>
+            <h1 className="text-2xl font-heading " onClick={() => navigate("/")}>Content Management System</h1>
             { isLoggedIn ? (
                 <nav className="flex flex-col w-full h-full">
                     <div className="nav-link" onClick={() => onClick("/home") }>Home</div>

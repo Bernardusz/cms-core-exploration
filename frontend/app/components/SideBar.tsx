@@ -2,6 +2,7 @@ import SettingsLogo from "~/assets/Settings.svg?react"
 import useNavbar from "~/context/navbar";
 import useTokenState from "~/context/token";
 import { useNavigate } from "react-router";
+import { useEffect } from "react";
 
 
 const SideBar = () => {
@@ -9,16 +10,52 @@ const SideBar = () => {
     const isLoggedIn = useTokenState((state) => state.isLoggedIn);
     const setClose = useNavbar((state) => state.setClose);
     const isOpen = useNavbar((state) => state.isOpen);
+    const setOpen = useNavbar((state) => state.setOpen)
     const navigate = useNavigate();
     const onClick = (to: string) => {
         navigate(to);
         setClose()
     };
+    useEffect(() => {
+        // --- 1. Client-Side Safety Check ---
+        if (!isLoggedIn) {
+            return;
+        }
+        if (typeof window === 'undefined') {
+            return;
+        }
+
+        // Function to check width and set state
+        const checkWidthAndSetState = () => {
+            // Log for debugging: Check what the function is reading
+            // console.log('Current width:', window.innerWidth, 'Is opening:', window.innerWidth >= 1024);
+            
+            if (window.innerWidth >= 1024) {
+                // Open for large screens
+                setOpen();
+            } else {
+                // Close for small screens
+                setClose();
+            }
+        };
+
+        // Call the check immediately on mount
+        checkWidthAndSetState();
+
+
+        // --- 2. Resize Listener ---
+        window.addEventListener('resize', checkWidthAndSetState);
+        
+        // --- 3. Cleanup ---
+        return () => {
+            window.removeEventListener('resize', checkWidthAndSetState);
+        };
+    }, [setOpen, setClose]); // Make sure setOpen/setClose are stable functions
     return (
     <div className={`
         transition-all duration-1000 ease-in-out
         z-40 fixed md:sticky  flex-col justify-end top-0 h-screen bg-primary shrink-0 gap-10
-        ${ isOpen ? "w-[80vw] md:w-[20vw]" : "w-0" } 
+        ${ isOpen ? `w-[80vw] ${isLoggedIn ? "lg:w-[20vw]" : "md:w-[20vw]"}` : "w-0" } 
         overflow-hidden 
         flex 
     `}>
