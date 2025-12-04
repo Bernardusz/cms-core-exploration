@@ -14,6 +14,7 @@ import Footer from "./components/Footer";
 // import useTokenState from "./context/token";
 import SideBar from "./components/SideBar";
 import useNavbar from "./context/navbar";
+import useTokenState from "./context/token";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -31,6 +32,7 @@ export const links: Route.LinksFunction = () => [
 export function Layout({ children }: { children: React.ReactNode }) {
   // const token = useTokenState((state) =>  state.accessToken);
   const isOpen = useNavbar((state) => state.isOpen)
+  const isLoggedIn = useTokenState(state => state.isLoggedIn);
   return (
     <html lang="en">
       <head>
@@ -43,7 +45,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         transition-transform duration-1000 ease-in-out
       `}>
         <Header />
-        <div className={`${isOpen ? "md:w-[80vw]" : "md: w-full"} flex`}>
+        <div className={`${isOpen ? `${isLoggedIn ? "lg:w-[80vw]" : "md:w-[80vw]"}` : "md: w-full"} flex`}>
           <SideBar/>
           
           <main className={`w-full flex-1 ${ isOpen ? "blur-sm md:blur-[0]" : "" } `}>

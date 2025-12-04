@@ -20,11 +20,6 @@ body {
   @apply min-h-screen  flex flex-col items-center;
 }
 
-.page--row {
-  @apply flex-row;
-}
-
-
 .font-heading{
   @apply font-['Poppins',sans-serif] font-bold;
 }
@@ -66,7 +61,7 @@ body {
 }
 
 .nav-link{
-  @apply h-fit p-2 w-full flex flex-col bg-primary  justify-center items-center font-['Bricolage_Grotesque',sans-serif] font-normal hover:scale-125 hover:bg-white hover:text-primary
+  @apply h-fit p-2 w-full flex flex-row bg-primary  items-center justify-start px-10 gap-7 font-['Bricolage_Grotesque',sans-serif] font-normal hover:scale-125 hover:bg-white hover:text-primary
 }
 
 .custom-bullet::before {

@@ -4,6 +4,8 @@ import { useState } from "react"
 import InputSection from "~/components/Input"
 import type { listOfInput } from "~/components/Input"
 import RightArrow from "~/assets/Arrow right.svg?react"
+import { handleSignup } from "~/api/apiFunctions"
+import { useNavigate } from "react-router"
 
 
 export function meta(_args: Route.MetaArgs) {
@@ -22,13 +24,10 @@ const Signup = () => {
 
     const [description, setDescription] = useState<string>("");
     const [privateAccount, setPrivateAccount] = useState<boolean>(false)
-    const [file, setFile] = useState<File | null>(null)
+    const [avatar, setAvatar] = useState<File | null>(null)
 
+    const navigate = useNavigate();
 
-
-    const handleSignup = () => {
-        // TODO: Add Sign up via Fetch/Axios
-    };
     const userCreationInput: listOfInput[] = [
         {id: 1, placeholder: "Input your Username", value: username, setValue: setUsername, type:"text"},
         {id: 2, placeholder: "Input you email", value: email, setValue: setEmail, type:"email"},
@@ -36,7 +35,7 @@ const Signup = () => {
     ];
     const profileCreationInput: listOfInput[] = [
         {id: 1, placeholder: "Input a description for your profile", value: description, setValue: setDescription, type: "description"},
-        {id: 2, placeholder: "Dropzone", value: file, setValue: setFile, type: "dropzone"},
+        {id: 2, placeholder: "Dropzone", value: avatar, setValue: setAvatar, type: "dropzone"},
         {id: 3, placeholder: "Create as a private account ?", value: privateAccount, setValue: setPrivateAccount, type: "checkbox"}
 
     ]
@@ -55,7 +54,7 @@ const Signup = () => {
                     <RightArrow className="rotate-180 fixed top-40 left-10" onClick={() => setPage("user")} />
                     <InputSection listOfInput={profileCreationInput} 
                     headingText="Create your CMS account!"
-                    buttonText="Sign Up" doTask={handleSignup}
+                    buttonText="Sign Up" doTask={() => handleSignup(username, password, email, description,privateAccount, avatar, navigate)}
                     footerText="Already signed up ?" footerLinkText="Login here !"
                     footerLink="/login"/>
                 </div>

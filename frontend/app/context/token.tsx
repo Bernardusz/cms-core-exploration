@@ -25,7 +25,7 @@ const saveToken = ({accessToken, refreshToken, state}: {accessToken: string, ref
 }
 
 const useTokenState = create<tokenState>()((set) => ({
-    isLoggedIn: true,
+    isLoggedIn: false,
     setIsLoggedIn: (loggedIn) => ( set({ isLoggedIn:  loggedIn}) ),
 
     state: "session",

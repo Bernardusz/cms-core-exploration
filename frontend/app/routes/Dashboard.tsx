@@ -1,4 +1,11 @@
+import GridContainer from "~/components/GridContainer";
 import type { Route } from "../+types/root";
+import { useState } from "react";
+import type { Data } from "~/components/BarChart";
+import BarChartComponent from "~/components/BarChart";
+
+
+
 export function meta(_args: Route.MetaArgs) {
   return [
     { title: "Dashboard - CMS" },
@@ -7,10 +14,20 @@ export function meta(_args: Route.MetaArgs) {
 }
 
 const Dashboard = () => {
-  // const [userSearch, setUserSearch]
+    const [data, setData] = useState<Data[]>([
+      {name: "January", views: 2240, likes: 430, followers: 100},
+      {name: "Febuary", views: 2056, likes: 340, followers: 79},
+      {name: "March", views: 2135, likes: 398, followers: 87},
+    ])
     return (
-        <div className="page page--row">
+        <div className="page">
             <section className="section">
+                <BarChartComponent data={data}/>
+              <GridContainer>
+                <BarChartComponent data={data}/>
+                <BarChartComponent data={data}/>
+                <BarChartComponent data={data}/>
+              </GridContainer>
             </section>
         </div>
     );
