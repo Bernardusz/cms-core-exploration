@@ -10,7 +10,6 @@ class ProfileViewSet(viewsets.ModelViewSet):
     serializer_class =  ProfileSerializer
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [JWTAuthentication]
-
     def get_queryset(self):
         user = self.request.user
         queryset = Profile.objects.filter(private=False)

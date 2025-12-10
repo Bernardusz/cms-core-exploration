@@ -20,8 +20,9 @@ export const handleLogin = async (
         await waitForInitialized();
         navigate("/dashboard", {replace: true});
     }
-    catch{
+    catch (error){
         alert("Failed!")
+        console.log(error)
     };
 };
 
@@ -49,10 +50,11 @@ export const handleSignup = async (
         }
         
 
-        await api.post("/user/create", formData);
+        await api.post("/user/create/", formData);
         navigate("/login", {replace: true});
     }
-    catch{
-        alert("Failed!")
+    catch (error){
+        console.log(error);
+        alert("Failed!");
     };
 };

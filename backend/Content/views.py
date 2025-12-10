@@ -26,6 +26,7 @@ class ContentViewSet(viewsets.ModelViewSet):
         return queryset.distinct()
 
 class SectionViewSet(viewsets.ModelViewSet):
+    queryset = Section.objects.all()
     serializer_class = SectionSerializer
     lookup_field = 'slug'
     permission_classes = [permissions.IsAuthenticated]
@@ -38,6 +39,7 @@ class SectionViewSet(viewsets.ModelViewSet):
         return Section.objects.filter(content__slug=content_slug)
     
 class CommentViewSet(viewsets.ModelViewSet):
+    queryset = Comment.objects.filter.all()
     serializer_class = CommentSerializer
     permission_classes = [permissions.AllowAny]
 
@@ -49,6 +51,7 @@ class CommentViewSet(viewsets.ModelViewSet):
 
     
 class ContentAccessViewSet(viewsets.ModelViewSet):
+    queryset = ContentAccess.objects.all()
     serializer_class = ContentAccessSerializer
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [JWTAuthentication]

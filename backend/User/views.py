@@ -7,6 +7,7 @@ from .serializers  import UserSerializer
 
 class UserCreateView(APIView):
     permission_classes = [permissions.AllowAny]
+
     def post(self, request):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():

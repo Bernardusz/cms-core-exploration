@@ -22,7 +22,7 @@ const api = axios.create({
 });
 
 api.interceptors.request.use(async (config) => {
-    const accessToken = useTokenState(state => state.accessToken);
+    const accessToken = useTokenState.getState().accessToken;
     if (accessToken){
         config.headers.Authorization = `Bearer ${accessToken}`
     }
